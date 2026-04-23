@@ -7,13 +7,7 @@ load_dotenv()
 app = Flask(__name__)
 
 def get_db_connection():
-    db_url = os.getenv("DATABASE_URL")
-    
-    if db_url:
-        # Если есть DATABASE_URL (на сервере), используем её
-        return psycopg2.connect(db_url)
-    else:
-        return psycopg2.connect(
+    return psycopg2.connect(
         database=os.getenv("DB_DATABASE"),
         host=os.getenv("DB_HOST"),
         user=os.getenv("DB_USER"),
